@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import datos from '../datos.json'; // Importamos el JSON local
+import datos from '../data/datos.json'; // Importamos el JSON local
 
 export default function Explorador() {
   // Estado para capturar lo que el usuario escribe
