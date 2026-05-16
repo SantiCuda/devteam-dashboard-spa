@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import teamData from '../data/team-data.json';
 
 const STACKS = {
   react: { label: 'React', src: '/img/stacks/react.svg' },
@@ -16,17 +17,8 @@ const STACKS = {
 
 export default function Perfil() {
   const { id } = useParams();
-  
-  // Simulación de una base de datos para cada integrante según su ID
-  const teamData = {
-    "1": { name: "Martín", role: "Backend Developer", github: "https://github.com/martin", linkedin: "https://www.linkedin.com/in/martin", codes: ["node", "architecture", "javascript"], skills: [{ name: "Node.js", level: "90%" }, { name: "Arquitectura", level: "85%" }], projects: [ { title: 'API E-commerce', desc: 'Backend escalable en Node.' }, { title: 'Auth System', desc: 'Sistema de login con JWT.' }, { title: 'Chatbot REST', desc: 'Integración con IA.' } ] },
-    "2": { name: "Adrian", role: "Infraestructura IT", github: "https://github.com/adrian", linkedin: "https://www.linkedin.com/in/adrian", codes: ["linux", "hardware", "security"], skills: [{ name: "Linux", level: "95%" }, { name: "Hardware", level: "85%" }], projects: [ { title: 'Data Center', desc: 'Migración de servidores.' }, { title: 'VPN Setup', desc: 'Configuración segura de red.' }, { title: 'Mantenimiento', desc: 'Soporte empresarial.' } ] },
-    "3": { name: "Santiago", role: "Security & Cloud", github: "https://github.com/santiago", linkedin: "https://www.linkedin.com/in/santiago", codes: ["security", "aws", "linux"], skills: [{ name: "Ciberseguridad", level: "90%" }, { name: "AWS Cloud", level: "80%" }], projects: [ { title: 'Pentesting', desc: 'Auditoría de seguridad web.' }, { title: 'Cloud Deploy', desc: 'Arquitectura en Amazon Web Services.' }, { title: 'Firewall Rules', desc: 'Filtros y protección de red.' } ] },
-    "4": { name: "Gaston", role: "Frontend Developer", github: "https://github.com/zamparg", linkedin: "https://www.linkedin.com/in/zamparg", codes: ["angular", "react", "css"], skills: [{ name: "Angular", level: "90%" }, { name: "React", level: "75%" }], projects: [ { title: 'WebApp Dashboard', desc: 'Panel administrativo moderno.' }, { title: 'UI Kit', desc: 'Librería de componentes.' }, { title: 'E-commerce UI', desc: 'Interfaz de tienda online.' } ] }
-  };
 
-  // Obtenemos los datos del integrante actual, si no existe usamos el 1 por defecto
-  const member = teamData[id] || teamData["1"];
+  const member = teamData.find((teamMember) => String(teamMember.id) === id) || teamData[0];
 
   // Estado para controlar qué proyecto del carrusel se está mostrando
   const [currentProject, setCurrentProject] = useState(0);
@@ -66,8 +58,11 @@ export default function Perfil() {
       <Link to="/" className="back-link">⬅ Volver al Dashboard</Link>
       
       <div className="perfil-header">
-        <h2>Perfil de {member.name}</h2>
-        <p className="accent-text">{member.role}</p>
+        <img className="perfil-avatar" src={member.avatar} alt={member.name} />
+        <div className="perfil-header-titles">
+          <h2>Perfil de {member.name}</h2>
+          <p className="accent-text">{member.role}</p>
+        </div>
       </div>
 
       <div className="perfil-grid">

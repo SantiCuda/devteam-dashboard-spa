@@ -156,10 +156,32 @@ body {
   display: inline-block;
 }
 
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.perfil-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.perfil-header-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .perfil-header h2 {
   font-size: 2rem;
   color: var(--bg-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 0.35rem;
 }
 
 .perfil-grid {
