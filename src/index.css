@@ -37,6 +37,15 @@ body {
   position: fixed; /* Esto la deja anclada a la izquierda */
   height: 100vh;
   box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  z-index: 1100;
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+.sidebar-backdrop {
+  display: none;
 }
 
 .sidebar h2 {
@@ -172,6 +181,7 @@ body {
   flex-shrink: 0;
 }
 
+.perfil-header-copy,
 .perfil-header-titles {
   display: flex;
   flex-direction: column;
@@ -468,3 +478,213 @@ body {
 .layout-node { border-left: 5px solid #f59e0b; }
 .page-node { border-left: 5px solid #10b981; }
 .leaf-node { border-left: 5px solid #3b82f6; font-size: 0.9rem; }
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 28px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .carousel {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    display: block;
+  }
+
+  .hamburger-btn {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: var(--bg-dark);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1300;
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.4);
+  }
+
+  .hamburger-btn span {
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-main);
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    width: min(290px, 80vw);
+    padding-top: 74px;
+    z-index: 1250;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    border: none;
+    background: rgba(2, 6, 23, 0.45);
+    z-index: 1200;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 84px 20px 20px;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    margin-bottom: 1.4rem;
+  }
+
+  .grid-container,
+  .perfil-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .member-card {
+    padding: 1.25rem;
+  }
+
+  .card-img-wrapper img {
+    width: 92px;
+    height: 92px;
+    margin-bottom: 1rem;
+  }
+
+  .perfil-header {
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .perfil-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .perfil-header h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .accent-text {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  .card-panel {
+    padding: 16px;
+  }
+
+  .icons-grid {
+    gap: 10px;
+  }
+
+  .social-btn {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .carousel-item {
+    order: -1;
+    padding: 0;
+  }
+
+  .carousel-btn {
+    width: 100%;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .pagination-container {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .lightbox-content {
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .lightbox-nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .tree,
+  .tree ul {
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hamburger-btn {
+    width: 42px;
+    height: 42px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .main-content {
+    padding: 70px 20px 20px;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  .card-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-info p {
+    font-size: 0.8rem;
+  }
+
+  .tech-icon small {
+    font-size: 0.78rem;
+  }
+
+  .lightbox-close {
+    top: 8px;
+    right: 12px;
+  }
+}
