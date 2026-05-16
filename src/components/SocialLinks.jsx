@@ -1,9 +1,19 @@
-export default function SocialLinks() {
+export default function SocialLinks({ github, linkedin }) {
   return (
     <div className="social-media card-panel">
-      <h3>Contacto</h3>
-      <button className="social-btn">GitHub</button>
-      <button className="social-btn">LinkedIn</button>
+      <h3 className="mb-1">Contacto</h3>
+      
+      {github && (
+        <a className="social-btn" href={github} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      )}
+      
+      {linkedin && (
+        <a className="social-btn" href={linkedin} target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+      )}
     </div>
   );
 }

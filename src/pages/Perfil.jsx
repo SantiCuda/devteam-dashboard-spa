@@ -28,11 +28,6 @@ export default function Perfil() {
 
   const member = teamData[id] || teamData["1"];
 
-<<<<<<< HEAD
-=======
-  // Estado para controlar qué proyecto del carrusel se está mostrando
-  const [currentProject, setCurrentProject] = useState(0);
-
   const renderTechIcon = (stackCode) => {
     switch (stackCode) {
       case 'react':
@@ -59,11 +54,7 @@ export default function Perfil() {
     }
   };
 
-  // Funciones para avanzar y retroceder en el carrusel
-  const nextSlide = () => setCurrentProject((prev) => (prev === member.projects.length - 1 ? 0 : prev + 1));
-  const prevSlide = () => setCurrentProject((prev) => (prev === 0 ? member.projects.length - 1 : prev - 1));
 
->>>>>>> 855bbbc500a3f2c17bcd2410427d86a7972a7b22
   return (
     <section className="perfil-section fade-in">
       <Link to="/" className="back-link">⬅ Volver al Dashboard</Link>
@@ -95,36 +86,15 @@ export default function Perfil() {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* 3. Redes Sociales (Componente) */}
-        <SocialLinks />
-=======
-        {/* 3. Redes Sociales */}
-        <div className="social-media card-panel">
-          <h3 className="mb-1">Contacto</h3>
-          <a className="social-btn" href={member.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a className="social-btn" href={member.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
->>>>>>> 855bbbc500a3f2c17bcd2410427d86a7972a7b22
+        <SocialLinks github={member.github} linkedin={member.linkedin} />
       </div>
 
       {/* 4. Carrusel de Proyectos (Componente) */}
       <div className="projects-carousel card-panel mt-2">
-<<<<<<< HEAD
-        <h3>Proyectos Destacados</h3>
+        <h3 className="mb-1">Proyectos Destacados</h3>
         {/* Le pasamos la data del integrante actual por prop */}
         <Carousel projects={member.projects} />
-=======
-        <h3 className="mb-1">Proyectos Destacados</h3>
-        <div className="carousel">
-          <button className="carousel-btn" onClick={prevSlide}>⬅ Anterior</button>
-          <div className="carousel-item fade-in" key={currentProject}>
-            <h4>{member.projects[currentProject].title}</h4>
-            <p>{member.projects[currentProject].desc}</p>
-          </div>
-          <button className="carousel-btn" onClick={nextSlide}>Siguiente ➡</button>
-        </div>
->>>>>>> 855bbbc500a3f2c17bcd2410427d86a7972a7b22
       </div>
     </section>
   );
