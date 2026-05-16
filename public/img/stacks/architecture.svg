@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Arquitectura">
+  <rect width="16" height="16" rx="4" fill="#334155"/>
+  <path d="M3 12.5h10M4.5 12.5V5.6M8 12.5V3.6M11.5 12.5V7.1" stroke="#f8fafc" stroke-width="1" stroke-linecap="round"/>
+  <rect x="3.7" y="4.8" width="1.6" height="1.6" rx=".25" fill="#38bdf8"/>
+  <rect x="7.2" y="2.8" width="1.6" height="1.6" rx=".25" fill="#38bdf8"/>
+  <rect x="10.7" y="6.3" width="1.6" height="1.6" rx=".25" fill="#38bdf8"/>
+  <path d="M4.5 5.6 8 3.6 11.5 7.1" fill="none" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/>
+</svg>

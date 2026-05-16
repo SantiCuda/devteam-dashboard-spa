@@ -1,0 +1,22 @@
+[
+  { "id": 1, "nombre": "React", "categoria": "Frontend", "descripcion": "Librería para construir interfaces de usuario." },
+  { "id": 2, "nombre": "Node.js", "categoria": "Backend", "descripcion": "Entorno de ejecución para JavaScript en el servidor." },
+  { "id": 3, "nombre": "Express", "categoria": "Backend", "descripcion": "Framework web rápido y minimalista para Node.js." },
+  { "id": 4, "nombre": "MongoDB", "categoria": "Base de Datos", "descripcion": "Base de datos NoSQL orientada a documentos." },
+  { "id": 5, "nombre": "PostgreSQL", "categoria": "Base de Datos", "descripcion": "Sistema de base de datos relacional avanzado." },
+  { "id": 6, "nombre": "Docker", "categoria": "DevOps", "descripcion": "Plataforma para desarrollar y ejecutar aplicaciones en contenedores." },
+  { "id": 7, "nombre": "Kubernetes", "categoria": "DevOps", "descripcion": "Sistema de orquestación de contenedores." },
+  { "id": 8, "nombre": "Git", "categoria": "Herramienta", "descripcion": "Sistema de control de versiones distribuido." },
+  { "id": 9, "nombre": "GitHub", "categoria": "Herramienta", "descripcion": "Plataforma de alojamiento para desarrollo de software." },
+  { "id": 10, "nombre": "Vercel", "categoria": "Deploy", "descripcion": "Plataforma en la nube para sitios estáticos y despliegues rápidos." },
+  { "id": 11, "nombre": "Figma", "categoria": "Diseño", "descripcion": "Herramienta de diseño de interfaces colaborativa." },
+  { "id": 12, "nombre": "Tailwind CSS", "categoria": "Frontend", "descripcion": "Framework de CSS utility-first." },
+  { "id": 13, "nombre": "Sass", "categoria": "Frontend", "descripcion": "Lenguaje de extensión de CSS (preprocesador)." },
+  { "id": 14, "nombre": "TypeScript", "categoria": "Lenguaje", "descripcion": "Superconjunto tipado estáticamente para JavaScript." },
+  { "id": 15, "nombre": "Python", "categoria": "Lenguaje", "descripcion": "Lenguaje de programación de propósito general." },
+  { "id": 16, "nombre": "Django", "categoria": "Backend", "descripcion": "Framework web de alto nivel para Python." },
+  { "id": 17, "nombre": "Jest", "categoria": "Testing", "descripcion": "Framework de pruebas enfocado en la simplicidad." },
+  { "id": 18, "nombre": "Cypress", "categoria": "Testing", "descripcion": "Herramienta de pruebas end-to-end para la web." },
+  { "id": 19, "nombre": "GraphQL", "categoria": "API", "descripcion": "Lenguaje de consulta y manipulación de datos para APIs." },
+  { "id": 20, "nombre": "Postman", "categoria": "Herramienta", "descripcion": "Plataforma para el desarrollo y prueba de APIs." }
+]
