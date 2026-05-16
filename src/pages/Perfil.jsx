@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import teamData from '../data/team-data.json';
+import Carousel from '../components/Carousel';
+import SocialLinks from '../components/SocialLinks';
 
 const STACKS = {
   react: { label: 'React', src: '/img/stacks/react.svg' },
@@ -19,9 +20,6 @@ export default function Perfil() {
   const { id } = useParams();
 
   const member = teamData.find((teamMember) => String(teamMember.id) === id) || teamData[0];
-
-  // Estado para controlar qué proyecto del carrusel se está mostrando
-  const [currentProject, setCurrentProject] = useState(0);
 
   const renderTechIcon = (stackCode) => {
     switch (stackCode) {
@@ -49,9 +47,6 @@ export default function Perfil() {
     }
   };
 
-  // Funciones para avanzar y retroceder en el carrusel
-  const nextSlide = () => setCurrentProject((prev) => (prev === member.projects.length - 1 ? 0 : prev + 1));
-  const prevSlide = () => setCurrentProject((prev) => (prev === 0 ? member.projects.length - 1 : prev - 1));
 
   return (
     <section className="perfil-section fade-in">
@@ -72,7 +67,9 @@ export default function Perfil() {
           {member.skills.map((skill, index) => (
             <div className="skill" key={index}>
               <span>{skill.name}</span>
-              <div className="progress-bar-bg"><div className="progress-bar-fill" style={{ width: skill.level }}></div></div>
+              <div className="progress-bar-bg">
+                <div className="progress-bar-fill" style={{ width: skill.level }}></div>
+              </div>
             </div>
           ))}
         </div>
@@ -85,25 +82,15 @@ export default function Perfil() {
           </div>
         </div>
 
-        {/* 3. Redes Sociales */}
-        <div className="social-media card-panel">
-          <h3 className="mb-1">Contacto</h3>
-          <a className="social-btn" href={member.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a className="social-btn" href={member.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
+        {/* 3. Redes Sociales (Componente) */}
+        <SocialLinks github={member.github} linkedin={member.linkedin} />
       </div>
 
-      {/* 4. Carrusel de Proyectos (Interactivo) */}
+      {/* 4. Carrusel de Proyectos (Componente) */}
       <div className="projects-carousel card-panel mt-2">
         <h3 className="mb-1">Proyectos Destacados</h3>
-        <div className="carousel">
-          <button className="carousel-btn" onClick={prevSlide}>⬅ Anterior</button>
-          <div className="carousel-item fade-in" key={currentProject}>
-            <h4>{member.projects[currentProject].title}</h4>
-            <p>{member.projects[currentProject].desc}</p>
-          </div>
-          <button className="carousel-btn" onClick={nextSlide}>Siguiente ➡</button>
-        </div>
+        {/* Le pasamos la data del integrante actual por prop */}
+        <Carousel projects={member.projects} />
       </div>
     </section>
   );
