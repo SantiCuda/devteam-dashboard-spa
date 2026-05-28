@@ -11,10 +11,10 @@ El propósito de este proyecto es presentar el portafolio y las herramientas de 
 ## 3. Integrantes
 | Nombre | Rol principal | GitHub |
 | :--- | :--- | :--- |
-| **Martín** | Backend Developer | [Perfil de GitHub](https://github.com/tu-usuario) |
-| **Adrian** | Infraestructura IT | [Perfil de GitHub](https://github.com/tu-usuario) |
-| **Santiago** | Security & Cloud | [Perfil de GitHub](https://github.com/tu-usuario) |
-| **Gaston** | Frontend Developer | [Perfil de GitHub](https://github.com/tu-usuario) |
+| **Martín** | Backend Developer | [Perfil de GitHub](https://github.com/Marto85) |
+| **Adrian** | Infraestructura IT | [Perfil de GitHub](https://github.com/MaverickARG) |
+| **Santiago** | Security & Cloud | [Perfil de GitHub](https://github.com/santicuda) |
+| **Gaston** | Frontend Developer | [Perfil de GitHub](https://github.com/zamparg) |
 
 ## 4. Tecnologías Utilizadas
 *   **Core:** React, JavaScript (ES6+), HTML5, CSS3.
