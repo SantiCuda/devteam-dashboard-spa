@@ -61,8 +61,8 @@ El desarrollo está basado completamente en Functional Components y React Hooks:
 *   **Rutas Dinámicas (`useParams`):** Permite renderizar información distinta en el componente `Perfil.jsx` dependiendo del ID del estudiante clickeado en la grilla principal.
 
 *(Añadir capturas de pantalla de la app en funcionamiento)*:
-> !Captura Dashboard Home
-> !Captura Galeria Lightbox
+![Captura Dashboard Home](public/img/screenshot-dashboard-v2.png)
+![Captura Galeria Lightbox](public/img/screenshot-galeria-v2.png)
 
 ## 8. Enlace al Proyecto Desplegado
 El proyecto se encuentra en producción y puede ser visitado en: 
