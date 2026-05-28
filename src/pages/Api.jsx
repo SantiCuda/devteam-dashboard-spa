@@ -45,7 +45,7 @@ export default function Api() {
 
   return (
     <section className="fade-in">
-      <h2 className="section-title">Desarrolladores JS (GitHub API)</h2>
+      <h2 className="section-title">Buscador de desarrolladores JS</h2>
 
       {initialLoad && loading && (
         <div className="card-panel">Cargando usuarios... ⏳</div>

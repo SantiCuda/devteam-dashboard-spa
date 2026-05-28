@@ -34,7 +34,7 @@ export default function Sidebar() {
             <Link to="/" className="nav-link" onClick={closeMenu}>Dashboard</Link>
           </li>
           <li className="nav-item">
-            <Link to="/explorador" className="nav-link" onClick={closeMenu}>Tecnologias Disponibles</Link>
+            <Link to="/explorador" className="nav-link" onClick={closeMenu}>Tecnologías Disponibles</Link>
           </li>
           <li className="nav-item">
             <Link to="/api" className="nav-link" onClick={closeMenu}>Desarrolladores JS</Link>

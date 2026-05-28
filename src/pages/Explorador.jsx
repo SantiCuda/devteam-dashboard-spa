@@ -13,7 +13,7 @@ export default function Explorador() {
 
   return (
     <section className="fade-in">
-      <h2 className="section-title">Buscador de Tecnologías (JSON)</h2>
+      <h2 className="section-title">Tecnologías disponibles</h2>
       
       <div className="search-container">
         <input 
