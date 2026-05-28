@@ -60,7 +60,6 @@ El desarrollo está basado completamente en Functional Components y React Hooks:
 *   **`useEffect`:** Implementado en la carga de la API (para llamadas asíncronas con `fetch`) y en el *mount* de la Galería para escuchar eventos de teclado (`keydown`) y poder cerrar el modal con la tecla **ESC**.
 *   **Rutas Dinámicas (`useParams`):** Permite renderizar información distinta en el componente `Perfil.jsx` dependiendo del ID del estudiante clickeado en la grilla principal.
 
-*(Añadir capturas de pantalla de la app en funcionamiento)*:
 ![Captura Dashboard Home](public/img/screenshot-dashboard-v2.png)
 ![Captura Galeria Lightbox](public/img/screenshot-galeria-v2.png)
 
