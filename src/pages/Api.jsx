@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const PER_PAGE = 12;
+const DEFAULT_QUERY = 'language:javascript';
 
 function SkeletonCard() {
   return (
@@ -19,6 +20,19 @@ export default function Api() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [inputValue, setInputValue] = useState('');
+  const [query, setQuery] = useState(DEFAULT_QUERY);
+
+  // Debounce: actualiza el query 500ms después de que el usuario deja de escribir
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const trimmed = inputValue.trim();
+      const nextQuery = trimmed ? `${trimmed} in:login` : DEFAULT_QUERY;
+      setQuery(nextQuery);
+      setPage(1);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [inputValue]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -26,12 +40,12 @@ export default function Api() {
       setError(null);
       try {
         const response = await fetch(
-          `https://api.github.com/search/users?q=language:javascript&per_page=${PER_PAGE}&page=${page}`
+          `https://api.github.com/search/users?q=${encodeURIComponent(query)}&per_page=${PER_PAGE}&page=${page}`
         );
         if (response.status === 403) throw new Error('Límite de peticiones alcanzado. Espera un minuto.');
         if (!response.ok) throw new Error(`Error de conexión HTTP: ${response.status}`);
         const data = await response.json();
-        setUsers(data.items);
+        setUsers(data.items ?? []);
         setTotalPages(Math.min(Math.ceil(data.total_count / PER_PAGE), 100));
       } catch (err) {
         setError(err.message);
@@ -41,11 +55,26 @@ export default function Api() {
       }
     };
     fetchUsers();
-  }, [page]);
+  }, [query, page]);
 
   return (
     <section className="fade-in">
       <h2 className="section-title">Desarrolladores JS (GitHub API)</h2>
+
+      <div className="search-container">
+        <div className="search-wrapper">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Buscar usuario de GitHub..."
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+          />
+          {inputValue && (
+            <button className="search-clear" onClick={() => setInputValue('')}>×</button>
+          )}
+        </div>
+      </div>
 
       {initialLoad && loading && (
         <div className="card-panel">Cargando usuarios... ⏳</div>
@@ -78,25 +107,33 @@ export default function Api() {
             }
           </div>
 
-          <div className="pagination-container card-panel mt-2">
-            <button
-              className="carousel-btn"
-              onClick={() => setPage(p => p - 1)}
-              disabled={page === 1}
-              style={{ opacity: page === 1 ? 0.5 : 1 }}
-            >
-              ⬅ Anterior
-            </button>
-            <span>Página {page} de {totalPages}</span>
-            <button
-              className="carousel-btn"
-              onClick={() => setPage(p => p + 1)}
-              disabled={page === totalPages}
-              style={{ opacity: page === totalPages ? 0.5 : 1 }}
-            >
-              Siguiente ➡
-            </button>
-          </div>
+          {!loading && users.length === 0 && (
+            <div className="card-panel" style={{ marginTop: '1rem' }}>
+              No se encontraron usuarios para "{inputValue}".
+            </div>
+          )}
+
+          {!loading && users.length > 0 && (
+            <div className="pagination-container card-panel mt-2">
+              <button
+                className="carousel-btn"
+                onClick={() => setPage(p => p - 1)}
+                disabled={page === 1}
+                style={{ opacity: page === 1 ? 0.5 : 1 }}
+              >
+                ⬅ Anterior
+              </button>
+              <span>Página {page} de {totalPages}</span>
+              <button
+                className="carousel-btn"
+                onClick={() => setPage(p => p + 1)}
+                disabled={page === totalPages}
+                style={{ opacity: page === totalPages ? 0.5 : 1 }}
+              >
+                Siguiente ➡
+              </button>
+            </div>
+          )}
         </>
       )}
     </section>

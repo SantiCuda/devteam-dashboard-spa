@@ -16,13 +16,18 @@ export default function Explorador() {
       <h2 className="section-title">Buscador de Tecnologías (JSON)</h2>
       
       <div className="search-container">
-        <input 
-          type="text" 
-          placeholder="Buscar por nombre o categoría (ej. Frontend)..." 
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
-          className="search-input"
-        />
+        <div className="search-wrapper">
+          <input
+            type="text"
+            placeholder="Buscar por nombre o categoría (ej. Frontend)..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            className="search-input"
+          />
+          {busqueda && (
+            <button className="search-clear" onClick={() => setBusqueda('')}>×</button>
+          )}
+        </div>
       </div>
 
       <div className="grid-container">

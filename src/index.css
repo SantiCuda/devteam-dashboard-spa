@@ -320,6 +320,37 @@ body {
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-wrapper .search-input {
+  max-width: 100%;
+  width: 100%;
+  padding-right: 42px;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+
+.search-clear:hover {
+  color: var(--accent);
+}
+
 .accent-text {
   color: var(--accent);
   font-weight: bold;
