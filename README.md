@@ -65,7 +65,7 @@ El desarrollo está basado completamente en Functional Components y React Hooks:
 
 ## 8. Enlace al Proyecto Desplegado
 El proyecto se encuentra en producción y puede ser visitado en: 
-👉 **[URL_DE_VERCEL_AQUÍ]**
+👉 [TP2 Front](https://tp2-front-eta.vercel.app/)
 
 ## 9. Evolución (De HTML estático a React)
 Este TP2 representa una refactorización total del Trabajo Práctico 1.
@@ -78,9 +78,10 @@ Este TP2 representa una refactorización total del Trabajo Práctico 1.
 ## 🤖 Requerimiento Obligatorio: Uso de Inteligencia Artificial
 Para el desarrollo de este proyecto integramos la IA como una herramienta de asistencia continua, respetando nuestra autoría en la lógica estructural:
 
-*   **Herramientas Utilizadas:** Gemini Code Assist / Google Gemini.
+*   **Herramientas Utilizadas:** Gemini Code Assist / Google Gemini · Claude Code (Anthropic).
 *   **Uso en Contenido y Código:** 
     *   **Generación de Datos Mock:** Le solicitamos a la IA generar los 20 objetos de tecnologías para el archivo `datos.json`. *(Prompt usado: "Genera un array JSON con 20 tecnologías de desarrollo web que incluyan id, nombre, categoría y descripción breve").*
     *   **Lógica y Debugging:** Recurrimos a Gemini para resolver un error de importación de rutas con Vite (al mover `datos.json` de carpeta) y para refinar la lógica del `useEffect` en la detección del evento de teclado (tecla ESC) para el componente Lightbox, asegurándonos de limpiar el *Event Listener* en el unmount.
     *   **Integración de API:** Utilizamos IA para adaptar rápidamente el manejo de errores HTTP y estado `loading` al consumir la API de GitHub en `Api.jsx`, atajando específicamente el status 403 por límites de llamadas.
+    *   **Claude Code — Iteraciones de UI y features en v2:** Usamos Claude Code (Anthropic) como asistente interactivo dentro del IDE para implementar y refinar funcionalidades de la versión 2.
 *   **Imágenes y Avatares:** Las imágenes utilizadas provienen de bases de datos de perfiles reales de GitHub y del portal fotográfico *Unsplash*, mientras que la estructura conceptual del esquema (Árbol de renderizado) fue diseñada de cero a través de CSS.
