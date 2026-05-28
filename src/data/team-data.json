@@ -43,8 +43,8 @@
     "role": "Security & Cloud",
     "description": "Especialista en seguridad informática, backend y cloud computing.",
     "avatar": "/img/avatar-santiago.png",
-    "github": "https://github.com/santiago",
-    "linkedin": "https://www.linkedin.com/in/santiago",
+    "github": "https://github.com/santicuda",
+    "linkedin": "https://www.linkedin.com/in/santiagocuda/",
     "codes": ["security", "aws", "linux"],
     "skills": [
       { "name": "Ciberseguridad", "level": "90%" },
