@@ -794,3 +794,150 @@ body {
   color: var(--text-dim);
   font-weight: 600;
 }
+
+/* API Grid */
+.api-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.api-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.api-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.api-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+}
+
+.api-login {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  word-break: break-all;
+}
+
+.api-type {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.api-card--skeleton {
+  cursor: default;
+  pointer-events: none;
+}
+
+@keyframes skeletonGlow {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.9; }
+}
+
+.api-skeleton {
+  background: #334155;
+  border-radius: 8px;
+  animation: skeletonGlow 1.4s ease-in-out infinite;
+}
+
+.api-skeleton--avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.api-skeleton--line { height: 12px; }
+.api-skeleton--wide   { width: 80%; }
+.api-skeleton--narrow { width: 50%; }
+
+@media (max-width: 1024px) {
+  .api-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .api-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Bitacora */
+.version-block {
+  margin-bottom: 2.5rem;
+}
+
+.version-label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding-left: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.bitacora-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bitacora-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.bitacora-item:last-child {
+  border-bottom: none;
+}
+
+.bitacora-date {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  padding-top: 0.2rem;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.bitacora-body h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+}
+
+.bitacora-body p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+  .bitacora-item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .version-label {
+    font-size: 1.1rem;
+  }
+}
