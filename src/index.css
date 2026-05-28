@@ -320,6 +320,37 @@ body {
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-wrapper .search-input {
+  max-width: 100%;
+  width: 100%;
+  padding-right: 42px;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+
+.search-clear:hover {
+  color: var(--accent);
+}
+
 .accent-text {
   color: var(--accent);
   font-weight: bold;
@@ -795,6 +826,88 @@ body {
   font-weight: 600;
 }
 
+/* API Grid */
+.api-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.api-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.api-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.api-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+}
+
+.api-login {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  word-break: break-all;
+}
+
+.api-type {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.api-card--skeleton {
+  cursor: default;
+  pointer-events: none;
+}
+
+@keyframes skeletonGlow {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.9; }
+}
+
+.api-skeleton {
+  background: #334155;
+  border-radius: 8px;
+  animation: skeletonGlow 1.4s ease-in-out infinite;
+}
+
+.api-skeleton--avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.api-skeleton--line { height: 12px; }
+.api-skeleton--wide   { width: 80%; }
+.api-skeleton--narrow { width: 50%; }
+
+@media (max-width: 1024px) {
+  .api-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .api-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Bitacora */
 /* ── Bitácora ── */
 .version-block {
   margin-bottom: 2.5rem;

@@ -25,7 +25,6 @@ export default function Sidebar() {
       {isOpen && <button type="button" className="sidebar-backdrop" onClick={closeMenu} aria-label="Cerrar menu" />}
 
       <aside id="main-sidebar" className={`sidebar ${isOpen ? 'is-open' : ''}`}>
-        {/* Reemplazar con <img src="/tu-logo.png" alt="Logo" /> si tienen imagen */}
         <div className="logo-container">
           <h2>Dev<span>Team</span></h2>
         </div>
@@ -35,10 +34,10 @@ export default function Sidebar() {
             <Link to="/" className="nav-link" onClick={closeMenu}>Dashboard</Link>
           </li>
           <li className="nav-item">
-            <Link to="/explorador" className="nav-link" onClick={closeMenu}>Buscador JSON</Link>
+            <Link to="/explorador" className="nav-link" onClick={closeMenu}>Tecnologías Disponibles</Link>
           </li>
           <li className="nav-item">
-            <Link to="/api" className="nav-link" onClick={closeMenu}>Integración API</Link>
+            <Link to="/api" className="nav-link" onClick={closeMenu}>Desarrolladores JS</Link>
           </li>
           <li className="nav-item">
             <Link to="/galeria" className="nav-link" onClick={closeMenu}>Galería de Imágenes</Link>

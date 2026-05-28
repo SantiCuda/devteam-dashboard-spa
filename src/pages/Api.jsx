@@ -1,72 +1,139 @@
 import { useState, useEffect } from 'react';
 
+const PER_PAGE = 12;
+const DEFAULT_QUERY = 'language:javascript';
+
+function SkeletonCard() {
+  return (
+    <div className="api-card api-card--skeleton">
+      <div className="api-skeleton api-skeleton--avatar" />
+      <div className="api-skeleton api-skeleton--line api-skeleton--wide" />
+      <div className="api-skeleton api-skeleton--line api-skeleton--narrow" />
+    </div>
+  );
+}
+
 export default function Api() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  // Estados para la paginación
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [initialLoad, setInitialLoad] = useState(true);
+  const [inputValue, setInputValue] = useState('');
+  const [query, setQuery] = useState(DEFAULT_QUERY);
+
+  // Debounce: actualiza el query 500ms después de que el usuario deja de escribir
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const trimmed = inputValue.trim();
+      const nextQuery = trimmed ? `${trimmed} in:login` : DEFAULT_QUERY;
+      setQuery(nextQuery);
+      setPage(1);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [inputValue]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
       setError(null);
       try {
-        // Consumo asíncrono de la API pública de GitHub (Buscando Devs de JavaScript)
-        const response = await fetch(`https://api.github.com/search/users?q=language:javascript&per_page=10&page=${page}`);
-        
-        // GitHub limita las peticiones rápidas, así que atajamos ese error específico
+        const response = await fetch(
+          `https://api.github.com/search/users?q=${encodeURIComponent(query)}&per_page=${PER_PAGE}&page=${page}`
+        );
         if (response.status === 403) throw new Error('Límite de peticiones alcanzado. Espera un minuto.');
         if (!response.ok) throw new Error(`Error de conexión HTTP: ${response.status}`);
-        
         const data = await response.json();
-        setUsers(data.items);
-        // GitHub permite ver hasta 1000 resultados, así que limitamos las páginas a 100
-        setTotalPages(Math.min(Math.ceil(data.total_count / 10), 100));
+        setUsers(data.items ?? []);
+        setTotalPages(Math.min(Math.ceil(data.total_count / PER_PAGE), 100));
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
+        setInitialLoad(false);
       }
     };
-
     fetchUsers();
-  }, [page]); // Se vuelve a ejecutar cada vez que cambia la página
+  }, [query, page]);
 
   return (
     <section className="fade-in">
-      <h2 className="section-title">Desarrolladores JS (GitHub API)</h2>
+      <h2 className="section-title">Buscador de desarrolladores JS</h2>
 
-      {/* Manejo de estados: Cargando y Error */}
-      {loading && <div className="card-panel">Cargando usuarios... ⏳</div>}
-      {error && <div className="card-panel" style={{ color: '#ef4444' }}>Error: {error}</div>}
+      <div className="search-container">
+        <div className="search-wrapper">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Buscar usuario de GitHub..."
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+          />
+          {inputValue && (
+            <button className="search-clear" onClick={() => setInputValue('')}>×</button>
+          )}
+        </div>
+      </div>
 
-      {/* Renderizado de Datos */}
-      {!loading && !error && (
+      {initialLoad && loading && (
+        <div className="card-panel">Cargando usuarios... ⏳</div>
+      )}
+
+      {error && (
+        <div className="card-panel" style={{ color: '#ef4444', background: 'rgba(239,68,68,0.08)', marginBottom: '1.5rem' }}>
+          Error: {error}
+        </div>
+      )}
+
+      {!initialLoad && (
         <>
-          <div className="grid-container">
-            {users.map(user => (
-              <div key={user.id} className="member-card">
-                <div className="card-img-wrapper">
-                  <img src={user.avatar_url} alt={user.login} />
-                </div>
-                <div className="card-info">
-                  <h3>{user.login}</h3>
-                  <p>Tipo: {user.type}</p>
-                  <a href={user.html_url} target="_blank" rel="noreferrer" style={{color: 'var(--accent)', textDecoration: 'none', fontSize: '0.9rem', marginTop: '10px', display: 'block'}}>Ver en GitHub</a>
-                </div>
-              </div>
-            ))}
+          <div className="api-grid">
+            {loading
+              ? Array.from({ length: PER_PAGE }).map((_, i) => <SkeletonCard key={i} />)
+              : users.map(user => (
+                  <a
+                    key={user.id}
+                    className="api-card"
+                    href={user.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img src={user.avatar_url} alt={user.login} className="api-avatar" />
+                    <span className="api-login">{user.login}</span>
+                    <span className="api-type">{user.type}</span>
+                  </a>
+                ))
+            }
           </div>
 
-          {/* Paginación */}
-          <div className="pagination-container card-panel mt-2">
-            <button className="carousel-btn" onClick={() => setPage(page - 1)} disabled={page === 1} style={{ opacity: page === 1 ? 0.5 : 1 }}>⬅ Anterior</button>
-            <span>Página {page} de {totalPages}</span>
-            <button className="carousel-btn" onClick={() => setPage(page + 1)} disabled={page === totalPages} style={{ opacity: page === totalPages ? 0.5 : 1 }}>Siguiente ➡</button>
-          </div>
+          {!loading && users.length === 0 && (
+            <div className="card-panel" style={{ marginTop: '1rem' }}>
+              No se encontraron usuarios para "{inputValue}".
+            </div>
+          )}
+
+          {!loading && users.length > 0 && (
+            <div className="pagination-container card-panel mt-2">
+              <button
+                className="carousel-btn"
+                onClick={() => setPage(p => p - 1)}
+                disabled={page === 1}
+                style={{ opacity: page === 1 ? 0.5 : 1 }}
+              >
+                ⬅ Anterior
+              </button>
+              <span>Página {page} de {totalPages}</span>
+              <button
+                className="carousel-btn"
+                onClick={() => setPage(p => p + 1)}
+                disabled={page === totalPages}
+                style={{ opacity: page === totalPages ? 0.5 : 1 }}
+              >
+                Siguiente ➡
+              </button>
+            </div>
+          )}
         </>
       )}
     </section>
