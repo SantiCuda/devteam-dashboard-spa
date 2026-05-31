@@ -4,16 +4,16 @@ import Carousel from '../components/Carousel';
 import SocialLinks from '../components/SocialLinks';
 
 const STACKS = {
-  react: { label: 'React', src: '/img/stacks/react.svg' },
-  node: { label: 'Node.js', src: '/img/stacks/node.svg' },
-  aws: { label: 'AWS', src: '/img/stacks/aws.svg' },
-  linux: { label: 'Linux', src: '/img/stacks/linux.svg' },
-  security: { label: 'Security', src: '/img/stacks/security.svg' },
-  angular: { label: 'Angular', src: '/img/stacks/angular.svg' },
-  javascript: { label: 'JavaScript', src: '/img/stacks/javascript.svg' },
-  css: { label: 'CSS', src: '/img/stacks/css.svg' },
-  hardware: { label: 'Hardware', src: '/img/stacks/hardware.svg' },
-  architecture: { label: 'Arquitectura', src: '/img/stacks/architecture.svg' },
+  react: { label: 'React', src: '/devteam-dashboard-spa/img/stacks/react.svg' },
+  node: { label: 'Node.js', src: '/devteam-dashboard-spa/img/stacks/node.svg' },
+  aws: { label: 'AWS', src: '/devteam-dashboard-spa/img/stacks/aws.svg' },
+  linux: { label: 'Linux', src: '/devteam-dashboard-spa/img/stacks/linux.svg' },
+  security: { label: 'Security', src: '/devteam-dashboard-spa/img/stacks/security.svg' },
+  angular: { label: 'Angular', src: '/devteam-dashboard-spa/img/stacks/angular.svg' },
+  javascript: { label: 'JavaScript', src: '/devteam-dashboard-spa/img/stacks/javascript.svg' },
+  css: { label: 'CSS', src: '/devteam-dashboard-spa/img/stacks/css.svg' },
+  hardware: { label: 'Hardware', src: '/devteam-dashboard-spa/img/stacks/hardware.svg' },
+  architecture: { label: 'Arquitectura', src: '/devteam-dashboard-spa/img/stacks/architecture.svg' },
 };
 
 export default function Perfil() {
