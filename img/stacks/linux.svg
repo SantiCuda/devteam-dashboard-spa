@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Linux">
+  <rect width="16" height="16" rx="4" fill="#0f172a"/>
+  <ellipse cx="8" cy="7.2" rx="2.9" ry="4.1" fill="#1f2937"/>
+  <ellipse cx="6.9" cy="6.1" rx=".55" ry=".72" fill="#fff"/>
+  <ellipse cx="9.1" cy="6.1" rx=".55" ry=".72" fill="#fff"/>
+  <circle cx="6.9" cy="6.3" r=".16" fill="#0f172a"/>
+  <circle cx="9.1" cy="6.3" r=".16" fill="#0f172a"/>
+  <path d="M8 7.2 7.2 8.25h1.6Z" fill="#f59e0b"/>
+  <path d="M6.1 10.1c.5.65 1.12.98 1.9.98s1.4-.33 1.9-.98" fill="#f8fafc"/>
+  <path d="M6 2.9 5 4.9l1.5-.35ZM10 2.9l1 2-1.5-.35Z" fill="#f8fafc"/>
+</svg>
